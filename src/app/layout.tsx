@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { VisualEditsMessenger } from "orchids-visual-edits";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Toaster } from "sonner";
@@ -30,7 +29,6 @@ export default function RootLayout({
         </main>
         <Footer />
         <Toaster position="top-right" richColors />
-        <VisualEditsMessenger />
       </body>
     </html>
   );
