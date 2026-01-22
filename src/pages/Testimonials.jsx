@@ -1,23 +1,15 @@
-"use client";
-
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import Link from "next/link";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { TestimonialCard } from "@/components/TestimonialCard";
-import {
-  testimonials as defaultTestimonials,
-} from "@/lib/data";
-import {
-  initializeTestimonials,
-  getTestimonials,
-  type Testimonial,
-} from "@/lib/localStorage";
+import { testimonials as defaultTestimonials } from "@/lib/data";
+import { initializeTestimonials, getTestimonials } from "@/lib/localStorage";
 import { ArrowRight, Star } from "lucide-react";
 
-export default function TestimonialsPage() {
-  const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
-  const [filter, setFilter] = useState<string>("all");
+export default function Testimonials() {
+  const [testimonials, setTestimonials] = useState([]);
+  const [filter, setFilter] = useState("all");
 
   useEffect(() => {
     initializeTestimonials(defaultTestimonials);
@@ -43,7 +35,7 @@ export default function TestimonialsPage() {
     <div className="pt-20">
       <section className="relative py-24 gradient-bg overflow-hidden">
         <div className="absolute inset-0">
-          <div className="absolute top-20 right-10 w-72 h-72 bg-[#2d8b3f]/10 rounded-full blur-3xl" />
+          <div className="absolute top-20 left-10 w-72 h-72 bg-[#2d8b3f]/10 rounded-full blur-3xl" />
         </div>
 
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
@@ -167,13 +159,13 @@ export default function TestimonialsPage() {
               keep coming back.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Link href="/book">
+              <Link to="/book">
                 <Button className="bg-white text-[#2d8b3f] hover:bg-gray-100 px-8 py-6 text-lg font-semibold rounded-full">
                   Book Your First Clean
                   <ArrowRight className="ml-2" size={20} />
                 </Button>
               </Link>
-              <Link href="/contact">
+              <Link to="/contact">
                 <Button
                   variant="outline"
                   className="border-2 border-white text-white hover:bg-white/10 px-8 py-6 text-lg font-semibold rounded-full"

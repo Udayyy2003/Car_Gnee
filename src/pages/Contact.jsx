@@ -1,5 +1,3 @@
-"use client";
-
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -13,6 +11,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { saveContact } from "@/lib/localStorage";
+import { submitContact } from "@/services/api";
 import { carCategories, planTypes } from "@/lib/data";
 import { toast } from "sonner";
 import {
@@ -24,7 +23,7 @@ import {
   MessageCircle,
 } from "lucide-react";
 
-export default function ContactPage() {
+export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
@@ -35,7 +34,7 @@ export default function ContactPage() {
     message: "",
   });
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
 
@@ -46,8 +45,13 @@ export default function ContactPage() {
         return;
       }
 
+      // Save to localStorage (as per requirement)
       saveContact(formData);
-      toast.success("Message sent successfully! We&apos;ll contact you soon.");
+      
+      // Call backend API (as per requirement)
+      await submitContact(formData);
+
+      toast.success("Message sent successfully! We'll contact you soon.");
       setFormData({
         name: "",
         phone: "",

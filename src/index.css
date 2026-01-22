@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
 
 @import "tailwindcss";
-@import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -201,8 +200,4 @@
 .card-hover:hover {
   transform: translateY(-8px);
   box-shadow: 0 20px 40px rgba(45, 139, 63, 0.15);
-}
-
-nextjs-portal {
-  display: none !important;
 }

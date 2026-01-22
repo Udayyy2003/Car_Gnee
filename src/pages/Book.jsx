@@ -1,8 +1,6 @@
-"use client";
-
 import { useState } from "react";
 import { motion } from "framer-motion";
-import Link from "next/link";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -14,6 +12,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { saveBooking } from "@/lib/localStorage";
+import { submitBooking } from "@/services/api";
 import { carCategories, planTypes, pricingData } from "@/lib/data";
 import { toast } from "sonner";
 import {
@@ -25,7 +24,7 @@ import {
   MapPin,
 } from "lucide-react";
 
-export default function BookPage() {
+export default function Book() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
@@ -40,7 +39,7 @@ export default function BookPage() {
     message: "",
   });
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
 
@@ -59,8 +58,13 @@ export default function BookPage() {
         return;
       }
 
+      // Save to localStorage (as per requirement)
       saveBooking(formData);
-      toast.success("Booking submitted successfully! We&apos;ll contact you shortly.");
+      
+      // Call backend API (as per requirement)
+      await submitBooking(formData);
+
+      toast.success("Booking submitted successfully! We'll contact you shortly.");
       setStep(3);
     } catch {
       toast.error("Something went wrong. Please try again.");
@@ -71,15 +75,15 @@ export default function BookPage() {
 
   const getPrice = () => {
     if (!formData.carType || !formData.plan) return null;
-    const carKey = formData.carType.toLowerCase().replace(/ \/ /g, "").replace(/ /g, "") as keyof typeof pricingData;
-    const mapping: Record<string, keyof typeof pricingData> = {
+    const carKey = formData.carType.toLowerCase().replace(/ \/ /g, "").replace(/ /g, "");
+    const mapping = {
       hatchback: "hatchback",
       sedan: "sedan",
       compactsuv: "compactSuv",
       suvmuv: "suvMuv",
     };
     const key = mapping[carKey] || "hatchback";
-    const planKey = formData.plan as "15" | "27";
+    const planKey = formData.plan;
     return pricingData[key]?.plans[planKey]?.price || 0;
   };
 
@@ -94,7 +98,7 @@ export default function BookPage() {
     <div className="pt-20">
       <section className="relative py-16 gradient-bg overflow-hidden">
         <div className="absolute inset-0">
-          <div className="absolute top-20 right-10 w-72 h-72 bg-[#2d8b3f]/10 rounded-full blur-3xl" />
+          <div className="absolute top-20 left-10 w-72 h-72 bg-[#2d8b3f]/10 rounded-full blur-3xl" />
         </div>
 
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
@@ -191,7 +195,7 @@ export default function BookPage() {
                   )}
                 </div>
               </div>
-              <Link href="/">
+              <Link to="/">
                 <Button className="bg-[#2d8b3f] hover:bg-[#236b31] text-white px-8 py-6 text-lg rounded-full">
                   Back to Home
                   <ArrowRight className="ml-2" size={20} />

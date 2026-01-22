@@ -1,9 +1,6 @@
-"use client";
-
 import { useState } from "react";
 import { motion } from "framer-motion";
-import Link from "next/link";
-import Image from "next/image";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { PricingCard } from "@/components/PricingCard";
 import { pricingData } from "@/lib/data";
@@ -27,8 +24,8 @@ const additionalServices = [
   },
 ];
 
-export default function PricingPage() {
-  const [selectedPlan, setSelectedPlan] = useState<"15" | "27">("27");
+export default function Pricing() {
+  const [selectedPlan, setSelectedPlan] = useState("27");
 
   return (
     <div className="pt-20">
@@ -126,11 +123,10 @@ export default function PricingPage() {
                 </ul>
               </div>
               <div className="relative aspect-[3/4] max-w-sm mx-auto lg:mx-0 lg:ml-auto rounded-2xl overflow-hidden shadow-xl">
-                <Image
+                <img
                   src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/poster-1768807507644.jpeg?width=8000&height=8000&resize=contain"
                   alt="Car Gnee Price List"
-                  fill
-                  className="object-cover"
+                  className="object-cover w-full h-full"
                 />
               </div>
             </div>
@@ -236,7 +232,7 @@ export default function PricingPage() {
               Start your eco-friendly car care journey today. Book online or call us!
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Link href="/book">
+              <Link to="/book">
                 <Button className="bg-white text-[#2d8b3f] hover:bg-gray-100 px-8 py-6 text-lg font-semibold rounded-full">
                   Book Now
                   <ArrowRight className="ml-2" size={20} />

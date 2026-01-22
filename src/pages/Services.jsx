@@ -1,7 +1,5 @@
-"use client";
-
 import { motion } from "framer-motion";
-import Link from "next/link";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import {
   CalendarDays,
@@ -94,7 +92,7 @@ const process = [
   },
 ];
 
-export default function ServicesPage() {
+export default function Services() {
   return (
     <div className="pt-20">
       <section className="relative py-24 gradient-bg overflow-hidden">
@@ -207,7 +205,7 @@ export default function ServicesPage() {
                     {service.ideal}
                   </p>
                   <div>
-                    <Link href="/pricing">
+                    <Link to="/pricing">
                       <Button className="bg-[#2d8b3f] hover:bg-[#236b31] text-white px-8 py-6 text-lg rounded-full">
                         View Pricing
                         <ArrowRight className="ml-2" size={20} />
@@ -345,13 +343,13 @@ export default function ServicesPage() {
               Choose your plan and experience the Car Gnee difference today.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Link href="/book">
+              <Link to="/book">
                 <Button className="bg-white text-[#2d8b3f] hover:bg-gray-100 px-8 py-6 text-lg font-semibold rounded-full">
                   Book Now
                   <ArrowRight className="ml-2" size={20} />
                 </Button>
               </Link>
-              <Link href="/pricing">
+              <Link to="/pricing">
                 <Button
                   variant="outline"
                   className="border-2 border-white text-white hover:bg-white/10 px-8 py-6 text-lg font-semibold rounded-full"

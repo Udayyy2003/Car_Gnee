@@ -1,8 +1,5 @@
-"use client";
-
 import { useState } from "react";
-import Image from "next/image";
-import Link from "next/link";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
   Droplets,
@@ -73,8 +70,8 @@ const stats = [
   { value: "4.9/5", label: "Customer Rating" },
 ];
 
-export default function HomePage() {
-  const [selectedPlan, setSelectedPlan] = useState<"15" | "27">("27");
+export default function Home() {
+  const [selectedPlan, setSelectedPlan] = useState("27");
 
   return (
     <div className="overflow-hidden">
@@ -106,13 +103,13 @@ export default function HomePage() {
                 showroom shine while protecting your car&apos;s paint.
               </p>
               <div className="flex flex-wrap gap-4">
-                <Link href="/book">
+                <Link to="/book">
                   <Button className="bg-[#2d8b3f] hover:bg-[#236b31] text-white px-8 py-6 text-lg font-semibold rounded-full animate-pulse-glow">
                     Book Now
                     <ArrowRight className="ml-2" size={20} />
                   </Button>
                 </Link>
-                <Link href="/pricing">
+                <Link to="/pricing">
                   <Button
                     variant="outline"
                     className="px-8 py-6 text-lg font-semibold rounded-full border-2 border-[#2d8b3f] text-[#2d8b3f] hover:bg-[#f0fdf4]"
@@ -151,12 +148,10 @@ export default function HomePage() {
               className="relative"
             >
               <div className="relative w-full aspect-square max-w-lg mx-auto">
-                <Image
+                <img
                   src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/cargnee-logo-1768807479306.jpg?width=8000&height=8000&resize=contain"
                   alt="Car Gnee Logo"
-                  fill
-                  className="object-contain drop-shadow-2xl"
-                  priority
+                  className="object-contain drop-shadow-2xl w-full h-full"
                 />
               </div>
             </motion.div>
@@ -224,7 +219,7 @@ export default function HomePage() {
             viewport={{ once: true }}
             className="text-center mt-12"
           >
-            <Link href="/services">
+            <Link to="/services">
               <Button
                 variant="outline"
                 className="border-2 border-[#2d8b3f] text-[#2d8b3f] hover:bg-[#2d8b3f] hover:text-white px-8 py-6 text-lg rounded-full"
@@ -299,7 +294,7 @@ export default function HomePage() {
             viewport={{ once: true }}
             className="text-center mt-12"
           >
-            <Link href="/pricing">
+            <Link to="/pricing">
               <Button
                 variant="outline"
                 className="border-2 border-[#2d8b3f] text-[#2d8b3f] hover:bg-[#2d8b3f] hover:text-white px-8 py-6 text-lg rounded-full"
@@ -393,7 +388,7 @@ export default function HomePage() {
             viewport={{ once: true }}
             className="text-center mt-12"
           >
-            <Link href="/testimonials">
+            <Link to="/testimonials">
               <Button
                 variant="outline"
                 className="border-2 border-[#2d8b3f] text-[#2d8b3f] hover:bg-[#2d8b3f] hover:text-white px-8 py-6 text-lg rounded-full"
@@ -468,7 +463,7 @@ export default function HomePage() {
               needs. Book your first service today!
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Link href="/book">
+              <Link to="/book">
                 <Button className="bg-white text-[#2d8b3f] hover:bg-gray-100 px-8 py-6 text-lg font-semibold rounded-full">
                   Book Service Now
                   <ArrowRight className="ml-2" size={20} />

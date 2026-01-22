@@ -1,8 +1,5 @@
-"use client";
-
 import { motion } from "framer-motion";
-import Image from "next/image";
-import Link from "next/link";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import {
   Droplets,
@@ -64,7 +61,7 @@ const howItWorks = [
   },
 ];
 
-export default function AboutPage() {
+export default function About() {
   return (
     <div className="pt-20">
       <section className="relative py-24 gradient-bg overflow-hidden">
@@ -123,11 +120,10 @@ export default function AboutPage() {
               className="relative"
             >
               <div className="relative w-full aspect-square max-w-md mx-auto">
-                <Image
+                <img
                   src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/cargnee-logo-1768807479306.jpg?width=8000&height=8000&resize=contain"
                   alt="Car Gnee Logo"
-                  fill
-                  className="object-contain"
+                  className="object-contain w-full h-full"
                 />
               </div>
             </motion.div>
@@ -197,8 +193,8 @@ export default function AboutPage() {
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Our advanced waterless cleaning technology uses specially
               formulated solutions that safely encapsulate dirt particles,
-allowing them to be wiped away without scratching your car&apos;s
-            paint.
+              allowing them to be wiped away without scratching your car&apos;s
+              paint.
             </p>
           </motion.div>
 
@@ -371,13 +367,13 @@ allowing them to be wiped away without scratching your car&apos;s
               waterless cleaning.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Link href="/book">
+              <Link to="/book">
                 <Button className="bg-white text-[#2d8b3f] hover:bg-gray-100 px-8 py-6 text-lg font-semibold rounded-full">
                   Book Your First Clean
                   <ArrowRight className="ml-2" size={20} />
                 </Button>
               </Link>
-              <Link href="/contact">
+              <Link to="/contact">
                 <Button
                   variant="outline"
                   className="border-2 border-white text-white hover:bg-white/10 px-8 py-6 text-lg font-semibold rounded-full"

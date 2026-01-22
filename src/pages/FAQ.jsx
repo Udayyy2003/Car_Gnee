@@ -1,7 +1,5 @@
-"use client";
-
 import { motion } from "framer-motion";
-import Link from "next/link";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import {
   Accordion,
@@ -12,7 +10,7 @@ import {
 import { faqs } from "@/lib/data";
 import { ArrowRight, HelpCircle, MessageCircle } from "lucide-react";
 
-export default function FAQPage() {
+export default function FAQ() {
   return (
     <div className="pt-20">
       <section className="relative py-24 gradient-bg overflow-hidden">
@@ -95,7 +93,7 @@ export default function FAQPage() {
               Reach out to us and we&apos;ll get back to you as soon as possible.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Link href="/contact">
+              <Link to="/contact">
                 <Button className="bg-[#2d8b3f] hover:bg-[#236b31] text-white px-8 py-6 text-lg rounded-full">
                   Contact Us
                   <ArrowRight className="ml-2" size={20} />
@@ -132,7 +130,7 @@ export default function FAQPage() {
             <p className="text-xl text-white/80 mb-8">
               Join hundreds of satisfied customers. Book your first clean today!
             </p>
-            <Link href="/book">
+            <Link to="/book">
               <Button className="bg-white text-[#2d8b3f] hover:bg-gray-100 px-8 py-6 text-lg font-semibold rounded-full">
                 Book Now
                 <ArrowRight className="ml-2" size={20} />
