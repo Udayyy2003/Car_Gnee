@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Menu, X, Phone } from "lucide-react";
+import { Menu, X, Phone, LogIn } from "lucide-react";
 import { Button } from "./ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -78,6 +78,12 @@ export function Navbar() {
                 <span className="opacity-60">Roshan:</span> +91 9328818557
               </a>
             </div>
+            <Link to="/login">
+              <Button variant="outline" className="border-[#2d8b3f] text-[#2d8b3f] hover:bg-[#2d8b3f] hover:text-white px-4 rounded-full shadow-md font-bold transition-all">
+                <LogIn size={18} className="mr-2" />
+                Login
+              </Button>
+            </Link>
             <Link to="/book">
               <Button className="bg-[#2d8b3f] hover:bg-[#236b31] text-white px-6 rounded-full shadow-md font-bold transition-all hover:scale-105">
                 Book Now
@@ -134,6 +140,12 @@ export function Navbar() {
                     <span className="font-bold">Roshan: +91 9328818557</span>
                   </a>
                 </div>
+                <Link to="/login" onClick={() => setIsOpen(false)} className="px-4">
+                  <Button className="w-full bg-white/10 text-white hover:bg-white/20 font-bold py-3 rounded-xl transition-all">
+                    <LogIn size={18} className="mr-2" />
+                    Login
+                  </Button>
+                </Link>
                 <Link to="/book" onClick={() => setIsOpen(false)} className="px-4">
                   <Button className="w-full bg-white text-[#2d8b3f] hover:bg-gray-100 font-bold py-6 rounded-xl transition-all hover:scale-[1.02]">
                     Book Now
