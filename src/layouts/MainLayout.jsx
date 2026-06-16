@@ -2,7 +2,7 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Outlet } from "react-router-dom";
 import { Toaster } from "sonner";
-import { PWAInstallBanner } from "@/components/PWAInstallBanner";
+import { PWAInstallBanner } from "@/components/PWAInstallBanner.jsx";
 
 export function MainLayout() {
   return (
